@@ -9,7 +9,7 @@ Based on the Web Application built in the Book ['Entity Framework Core in Action
 ## Getting started
 
 1. Clone the project.
-2. Open the solution file `SportsStoreApp.sln` with Visual Studio 2019.
+2. Open the solution file `BookStore.sln` with Visual Studio 2019.
 3. Press F5 to start the application.
 
 ## License
