@@ -23,28 +23,67 @@ namespace BookStore.Data
             builder.Entity<Review>()
                 .ToTable("Reviews");
 
-            builder.Entity<Book>()
-                .Property(p => p.Price)
-                .IsRequired()
-                .HasColumnType("decimal(8, 2)");
+            builder.Entity<Book>(b =>
+            {
+                b.Property(t => t.Title)
+                 .IsRequired()
+                 .HasMaxLength(255);
 
-            builder.Entity<PriceOffer>()
-                .Property(p => p.NewPrice)
-                .IsRequired()
-                .HasColumnType("decimal(8, 2)");
+                b.Property(t => t.Description)
+                 .IsRequired()
+                 .HasMaxLength(255);
 
-            builder.Entity<PriceOffer>()
-                .Property<long>("BookId");
+                b.Property(p => p.Price)
+                 .IsRequired()
+                 .HasColumnType("decimal(8, 2)");
 
-            builder.Entity<PriceOffer>()
-                .HasOne(p => p.Book)
-                .WithOne(p => p.Promotion)
-                .HasForeignKey<PriceOffer>("BookId");
+                b.Property(t => t.ImageUrl)
+                 .HasMaxLength(255);
+            });
+
+            builder.Entity<PriceOffer>(p =>
+            {
+                p.Property(p => p.NewPrice)
+                 .IsRequired()
+                 .HasColumnType("decimal(8, 2)");
+
+                p.Property(p => p.PromotionalText)
+                 .HasMaxLength(255);
+
+                p.Property<long>("BookId");
+
+                p.HasOne(p => p.Book)
+                 .WithOne(p => p.Promotion)
+                 .HasForeignKey<PriceOffer>("BookId");
+            });
 
             builder.Entity<Book>()
                 .HasMany(p => p.Tags)
                 .WithMany(p => p.Books)
                 .UsingEntity(j => j.ToTable("BooksTags"));
+
+            builder.Entity<Author>()
+                .Property(p => p.Name)
+                .IsRequired()
+                .HasMaxLength(255);
+
+            builder.Entity<Review>(r =>
+            {
+                r.Property(p => p.ReviewerName)
+                 .IsRequired()
+                 .HasMaxLength(255);
+
+                r.Property(p => p.Comment)
+                 .IsRequired()
+                 .HasMaxLength(255);
+
+                r.Property<long>("BookId");
+            });
+
+            builder.Entity<Tag>()
+                .Property(p => p.Value)
+                .IsRequired()
+                .HasMaxLength(255);
 
             builder.Entity<BookAuthor>()
                 .Property<long>("BookId");
