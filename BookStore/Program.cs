@@ -25,7 +25,7 @@ namespace BookStore
                 {
                     var context = services.GetRequiredService<ApplicationDbContext>();
 
-                    ApplicationDbContextSeedData.SeedDatabase(context);
+                    ApplicationDbSeedData.SeedDatabase(context);
                 }
                 catch (SqlException e)
                 {

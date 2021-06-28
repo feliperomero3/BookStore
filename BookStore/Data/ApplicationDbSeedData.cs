@@ -4,7 +4,7 @@ using BookStore.Entities;
 
 namespace BookStore.Data
 {
-    internal static class ApplicationDbContextSeedData
+    internal static class ApplicationDbSeedData
     {
         internal static void SeedDatabase(ApplicationDbContext context)
         {
