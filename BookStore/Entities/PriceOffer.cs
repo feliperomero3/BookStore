@@ -4,7 +4,7 @@
     {
         public long PriceOfferId { get; set; }
         public decimal NewPrice { get; set; }
-        public Book Book { get; set; }
         public string PromotionalText { get; set; }
+        public Book Book { get; set; }
     }
 }

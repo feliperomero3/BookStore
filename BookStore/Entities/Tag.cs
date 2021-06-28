@@ -4,8 +4,18 @@ namespace BookStore.Entities
 {
     public class Tag
     {
-        public long TagId { get; set; }
-        public string Value { get; set; }
-        public ICollection<Book> Books { get; set; }
+        public Tag(string value)
+        {
+            Value = value;
+        }
+
+        private Tag()
+        {
+            Books = new HashSet<Book>();
+        }
+
+        public long TagId { get; private set; }
+        public string Value { get; private set; }
+        public ICollection<Book> Books { get; private set; }
     }
 }

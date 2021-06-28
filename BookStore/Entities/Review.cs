@@ -2,10 +2,22 @@
 {
     public class Review
     {
-        public long ReviewId { get; set; }
-        public string ReviewerName { get; set; }
-        public int Stars { get; set; }
-        public string Comment { get; set; }
-        public Book Book { get; set; }
+        public Review(string reviewerName, int starts, string comment)
+        {
+            ReviewerName = reviewerName;
+            Stars = starts;
+            Comment = comment;
+        }
+
+        private Review()
+        {
+
+        }
+
+        public long ReviewId { get; private set; }
+        public string ReviewerName { get; private set; }
+        public int Stars { get; private set; }
+        public string Comment { get; private set; }
+        public Book Book { get; private set; }
     }
 }

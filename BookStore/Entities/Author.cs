@@ -4,9 +4,20 @@ namespace BookStore.Entities
 {
     public class Author
     {
-        public long AuthorId { get; set; }
-        public string Name { get; set; }
-        public ICollection<Book> Books { get; set; }
-        public List<BookAuthor> BooksAuthors { get; set; }
+        public long AuthorId { get; private set; }
+        public string Name { get; private set; }
+        public ICollection<Book> Books { get; private set; }
+        public List<BookAuthor> BooksAuthors { get; private set; }
+
+        private Author()
+        {
+            Books = new HashSet<Book>();
+            BooksAuthors = new List<BookAuthor>();
+        }
+
+        public Author(string name)
+        {
+            Name = name;
+        }
     }
 }
