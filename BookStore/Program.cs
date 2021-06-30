@@ -1,6 +1,6 @@
+using System;
 using BookStore.Data;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -27,7 +27,7 @@ namespace BookStore
 
                     ApplicationDbSeedData.SeedDatabase(context);
                 }
-                catch (SqlException e)
+                catch (Exception e)
                 {
                     var logger = services.GetRequiredService<ILogger<Program>>();
 
